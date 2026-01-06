@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>生日祝福卡片</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #ffe6f2; /* 柔和的粉色 */
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      text-align: center;
+      padding: 30px;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .cake-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 10px auto;
+      display: block;
+    }
+
+    .typewriter {
+      font-size: 2em;
+      margin: 20px 0;
+      color: #d63384;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #d63384;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: #d63384; }
+      50% { border-color: transparent; }
+    }
+
+    .wish-text {
+      font-size: 1.5em;
+      color: #6f42c1;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="https://img.alicdn.com/imgextra/i3/O1CN01CWFiQG1QvuaFkLxTL_!!6000000002039-2-tps-1024-1024.png" title="生日" alt="生日蛋糕" class="cake-img" />
+    <div id="greeting" class="typewriter"></div>
+    <div id="wish" class="wish-text"></div>
+  </div>
+
+  <script>
+    const greetingText = 'Happy birthday';
+    const wishText = 'Make a wish';
+
+    function typeWriter(element, text, speed = 150) {
+      let i = 0;
+      element.innerHTML = '';
+      const timer = setInterval(() => {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(timer);
+        }
+      }, speed);
+    }
+
+    // 延迟启动，避免同时开始
+    setTimeout(() => typeWriter(document.getElementById('greeting'), greetingText), 500);
+    setTimeout(() => typeWriter(document.getElementById('wish'), wishText, 200), 2000);
+  </script>
+
+</body>
+</html>
